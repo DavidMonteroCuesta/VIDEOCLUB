@@ -22,35 +22,71 @@ Partial Class Listado
     'No lo modifique con el editor de código.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        ListView1 = New ListView()
-        ColumnHeader1 = New ColumnHeader()
-        ColumnHeader2 = New ColumnHeader()
+        lstVwPeliculas = New ListView()
+        ID = New ColumnHeader()
+        TITULO = New ColumnHeader()
+        DIRECTOR = New ColumnHeader()
+        CALIFICACION = New ColumnHeader()
+        ANYO = New ColumnHeader()
+        GENERO = New ColumnHeader()
         SuspendLayout()
         ' 
-        ' ListView1
+        ' lstVwPeliculas
         ' 
-        ListView1.Columns.AddRange(New ColumnHeader() {ColumnHeader1, ColumnHeader2})
-        ListView1.Location = New Point(12, 12)
-        ListView1.Name = "ListView1"
-        ListView1.Size = New Size(683, 353)
-        ListView1.TabIndex = 0
-        ListView1.UseCompatibleStateImageBehavior = False
+        lstVwPeliculas.Columns.AddRange(New ColumnHeader() {ID, TITULO, DIRECTOR, CALIFICACION, ANYO, GENERO})
+        lstVwPeliculas.Location = New Point(16, 13)
+        lstVwPeliculas.Margin = New Padding(3, 4, 3, 4)
+        lstVwPeliculas.Name = "lstVwPeliculas"
+        lstVwPeliculas.Size = New Size(896, 469)
+        lstVwPeliculas.TabIndex = 0
+        lstVwPeliculas.UseCompatibleStateImageBehavior = False
+        lstVwPeliculas.View = View.Details
         ' 
-        ' ColumnHeader1
+        ' ID
         ' 
-        ColumnHeader1.Text = "ID"
+        ID.Text = "     ID"
         ' 
-        ' ColumnHeader2
+        ' TITULO
         ' 
-        ColumnHeader2.Text = "NOMBRE"
+        TITULO.Text = "TITULO"
+        TITULO.TextAlign = HorizontalAlignment.Center
+        TITULO.Width = 220
+        ' 
+        ' DIRECTOR
+        ' 
+        DIRECTOR.Text = "DIRECTOR"
+        DIRECTOR.TextAlign = HorizontalAlignment.Center
+        DIRECTOR.Width = 165
+        ' 
+        ' CALIFICACION
+        ' 
+        CALIFICACION.DisplayIndex = 4
+        CALIFICACION.Text = "CALIFICACIÓN"
+        CALIFICACION.TextAlign = HorizontalAlignment.Center
+        CALIFICACION.Width = 110
+        ' 
+        ' ANYO
+        ' 
+        ANYO.DisplayIndex = 5
+        ANYO.Text = "AÑO DE PUBLICACIÓN"
+        ANYO.TextAlign = HorizontalAlignment.Center
+        ANYO.Width = 170
+        ' 
+        ' GENERO
+        ' 
+        GENERO.DisplayIndex = 3
+        GENERO.Text = "GÉNERO"
+        GENERO.TextAlign = HorizontalAlignment.Center
+        GENERO.Width = 167
         ' 
         ' Listado
         ' 
-        AutoScaleDimensions = New SizeF(7F, 15F)
+        AutoScaleDimensions = New SizeF(8F, 20F)
         AutoScaleMode = AutoScaleMode.Font
         BackColor = SystemColors.ScrollBar
-        ClientSize = New Size(707, 377)
-        Controls.Add(ListView1)
+        ClientSize = New Size(924, 503)
+        Controls.Add(lstVwPeliculas)
+        Margin = New Padding(3, 4, 3, 4)
         MaximizeBox = False
         MinimizeBox = False
         Name = "Listado"
@@ -58,7 +94,11 @@ Partial Class Listado
         ResumeLayout(False)
     End Sub
 
-    Friend WithEvents ListView1 As ListView
-    Friend WithEvents ColumnHeader1 As ColumnHeader
-    Friend WithEvents ColumnHeader2 As ColumnHeader
+    Friend WithEvents lstVwPeliculas As ListView
+    Friend WithEvents ID As ColumnHeader
+    Friend WithEvents TITULO As ColumnHeader
+    Friend WithEvents DIRECTOR As ColumnHeader
+    Friend WithEvents CALIFICACION As ColumnHeader
+    Friend WithEvents ANYO As ColumnHeader
+    Friend WithEvents GENERO As ColumnHeader
 End Class

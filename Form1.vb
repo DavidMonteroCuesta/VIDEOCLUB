@@ -1,5 +1,10 @@
-﻿Public Class Form1
+﻿Imports System.Data.OleDb
+
+Public Class Form1
+
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        BBDD_Access.Conectar()
+
         ToolStripComboBox2.Text = "Max"
         ToolStripComboBox3.Text = "Min"
         ocultarTodo()
@@ -125,6 +130,15 @@
     End Sub
 
     Private Sub btnAgregar_Click(sender As Object, e As EventArgs) Handles btnAgregar.Click
+        Dim pelicula As New Pelicula(
+            txtBxTitulo.Text,
+            txtBxDirector.Text,
+            cmbBxGenero.SelectedItem.ToString(),
+            txtbxCalificacion.Text,
+            cmbBoxAnyo.SelectedItem.ToString()
+        )
+
+        BBDD_Access.AgregarPeliculaConDataAdapter(pelicula)
         liberarPelicula()
         ocultarTodo()
     End Sub
