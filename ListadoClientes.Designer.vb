@@ -34,11 +34,12 @@ Partial Class ListadoClientes
         NOMBRE = New ColumnHeader()
         APELLIDO1 = New ColumnHeader()
         APELLIDO2 = New ColumnHeader()
-        NUM_CONTACTO = New ColumnHeader()
+        DNI = New ColumnHeader()
+        CONTACTO = New ColumnHeader()
         EMAIL = New ColumnHeader()
-        SOCIO = New ColumnHeader()
         lblApellido2Listado = New Label()
         txtBxApellido2Listado = New TextBox()
+        SOCIO = New ColumnHeader()
         SuspendLayout()
         ' 
         ' lblApellido1Listado
@@ -107,7 +108,7 @@ Partial Class ListadoClientes
         ' btnFinal
         ' 
         btnFinal.Font = New Font("Segoe UI Light", 17.25F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        btnFinal.Location = New Point(813, 8)
+        btnFinal.Location = New Point(913, 10)
         btnFinal.Margin = New Padding(3, 2, 3, 2)
         btnFinal.Name = "btnFinal"
         btnFinal.Size = New Size(99, 40)
@@ -117,10 +118,10 @@ Partial Class ListadoClientes
         ' 
         ' lstVwClientes
         ' 
-        lstVwClientes.Columns.AddRange(New ColumnHeader() {ID, NOMBRE, APELLIDO1, APELLIDO2, NUM_CONTACTO, EMAIL, SOCIO})
+        lstVwClientes.Columns.AddRange(New ColumnHeader() {ID, NOMBRE, APELLIDO1, APELLIDO2, DNI, CONTACTO, EMAIL, SOCIO})
         lstVwClientes.Location = New Point(12, 55)
         lstVwClientes.Name = "lstVwClientes"
-        lstVwClientes.Size = New Size(910, 353)
+        lstVwClientes.Size = New Size(1009, 353)
         lstVwClientes.TabIndex = 30
         lstVwClientes.UseCompatibleStateImageBehavior = False
         lstVwClientes.View = View.Details
@@ -147,22 +148,23 @@ Partial Class ListadoClientes
         APELLIDO2.TextAlign = HorizontalAlignment.Center
         APELLIDO2.Width = 165
         ' 
-        ' NUM_CONTACTO
+        ' DNI
         ' 
-        NUM_CONTACTO.Text = "CONTACTO"
-        NUM_CONTACTO.TextAlign = HorizontalAlignment.Center
-        NUM_CONTACTO.Width = 110
+        DNI.Text = "DNI"
+        DNI.TextAlign = HorizontalAlignment.Center
+        DNI.Width = 110
+        ' 
+        ' CONTACTO
+        ' 
+        CONTACTO.Text = "CONTACTO"
+        CONTACTO.TextAlign = HorizontalAlignment.Center
+        CONTACTO.Width = 100
         ' 
         ' EMAIL
         ' 
         EMAIL.Text = "EMAIL"
         EMAIL.TextAlign = HorizontalAlignment.Center
         EMAIL.Width = 180
-        ' 
-        ' SOCIO
-        ' 
-        SOCIO.Text = "SOCIO"
-        SOCIO.TextAlign = HorizontalAlignment.Center
         ' 
         ' lblApellido2Listado
         ' 
@@ -185,12 +187,17 @@ Partial Class ListadoClientes
         txtBxApellido2Listado.TabIndex = 38
         txtBxApellido2Listado.UseWaitCursor = True
         ' 
+        ' SOCIO
+        ' 
+        SOCIO.Text = "SOCIO"
+        SOCIO.TextAlign = HorizontalAlignment.Center
+        ' 
         ' ListadoClientes
         ' 
         AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
         BackColor = SystemColors.ScrollBar
-        ClientSize = New Size(934, 424)
+        ClientSize = New Size(1037, 424)
         Controls.Add(lblApellido2Listado)
         Controls.Add(txtBxApellido2Listado)
         Controls.Add(lblApellido1Listado)
@@ -224,4 +231,6 @@ Partial Class ListadoClientes
     Friend WithEvents SOCIO As ColumnHeader
     Friend WithEvents lblApellido2Listado As Label
     Friend WithEvents txtBxApellido2Listado As TextBox
+    Friend WithEvents DNI As ColumnHeader
+    Friend WithEvents CONTACTO As ColumnHeader
 End Class

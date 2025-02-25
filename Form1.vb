@@ -11,11 +11,18 @@ Public Class Form1
     Private Sub ocultarTodo()
         GroupBoxPeliculas.Enabled = False
         GroupBoxClientes.Enabled = False
-        btnAgregar.Enabled = False
-        btnEliminar.Enabled = False
-        btnModificar.Enabled = False
+        btnAceptar.Enabled = False
+        btnCancelar.Enabled = False
 
         For Each control As Control In GroupBoxPeliculas.Controls
+            If TypeOf control Is TextBox Then
+                CType(control, TextBox).Clear()
+            ElseIf TypeOf control Is ComboBox Then
+                CType(control, ComboBox).SelectedIndex = -1
+            End If
+        Next
+
+        For Each control As Control In GroupBoxClientes.Controls
             If TypeOf control Is TextBox Then
                 CType(control, TextBox).Clear()
             ElseIf TypeOf control Is ComboBox Then
@@ -87,31 +94,66 @@ Public Class Form1
         controlarAccesibilidad("EDITAR_CLIENTE")
     End Sub
 
+    Private Sub btnAceptar_Click(sender As Object, e As EventArgs) Handles btnAceptar.Click
+        If Me.Text.Contains("AGREGAR") Then
+            Agregar()
+        ElseIf Me.Text.Contains("EDITAR") Then
+            Modificar()
+        ElseIf Me.Text.Contains("ELIMINAR") Then
+            Eliminar()
+        End If
 
-    Private Sub btnAgregar_Click(sender As Object, e As EventArgs) Handles btnAgregar.Click
-        Dim pelicula As New Pelicula(
-            txtBxPeliculaTitulo.Text,
-            txtBxPeliculaDirector.Text,
-            cmbBxPeliculaGenero.SelectedItem.ToString(),
-            txtBxPeliculaCalificacion.Text,
-            cmbBoxPeliculaAnyo.SelectedItem.ToString()
-        )
-
-        BBDDAccessPeliculas.AgregarPeliculaConDataAdapter(pelicula)
         liberarPelicula()
+        liberarCliente()
         ocultarTodo()
     End Sub
 
-    Private Sub btnEliminar_Click(sender As Object, e As EventArgs) Handles btnEliminar.Click
-        BBDDAccessPeliculas.EliminarPeliculaConDataAdapter(txtBoxPeliculaID.Text)
+    Private Sub btnCancelar_Click(sender As Object, e As EventArgs) Handles btnCancelar.Click
         liberarPelicula()
+        liberarCliente()
         ocultarTodo()
     End Sub
 
-    Private Sub btnModificar_Click(sender As Object, e As EventArgs) Handles btnModificar.Click
-        BBDDAccessPeliculas.ActualizarPeliculaConDataAdapter(txtBoxPeliculaID.Text, cmbBxPeliculaGenero.Text, txtBxPeliculaCalificacion.Text, cmbBoxPeliculaAnyo.Text)
-        liberarPelicula()
-        ocultarTodo()
+    Private Sub Agregar()
+        If Me.Text.Contains("CLIENTES") Then
+            Dim cliente As New Cliente(
+                txtBxClienteNombre.Text,
+                txtBxClienteApellido1.Text,
+                txtBxClienteApellido2.Text,
+                txtBxClienteDNI.Text,
+                txtBxClienteNumTel.Text,
+                txtBxClienteCorreo.Text,
+                If(cmbBxClienteSocio.SelectedItem.ToString() = "SI", True, False)
+                )
+            BBDDAccessClientes.AgregarClienteConDataAdapter(cliente)
+        Else
+            Dim pelicula As New Pelicula(
+                txtBxPeliculaTitulo.Text,
+                txtBxPeliculaDirector.Text,
+                cmbBxPeliculaGenero.SelectedItem.ToString,
+                txtBxPeliculaCalificacion.Text,
+                cmbBoxPeliculaAnyo.SelectedItem.ToString
+            )
+
+            BBDDAccessPeliculas.AgregarPeliculaConDataAdapter(pelicula)
+        End If
+    End Sub
+
+    Private Sub Modificar()
+        If Me.Text.Contains("CLIENTES") Then
+            Dim socio As Boolean = If(cmbBxClienteSocio.SelectedItem.ToString() = "SI", True, False)
+            BBDDAccessClientes.ActualizarClienteConDataAdapter(txtBxClienteID.Text, txtBxClienteNumTel.Text, txtBxClienteCorreo.Text, socio)
+        Else
+            BBDDAccessPeliculas.ActualizarPeliculaConDataAdapter(txtBoxPeliculaID.Text, cmbBxPeliculaGenero.Text, txtBxPeliculaCalificacion.Text, cmbBoxPeliculaAnyo.Text)
+        End If
+    End Sub
+
+    Private Sub Eliminar()
+        If Me.Text.Contains("CLIENTES") Then
+
+        Else
+            BBDDAccessPeliculas.EliminarPeliculaConDataAdapter(txtBoxPeliculaID.Text)
+        End If
     End Sub
 
     Private Sub controlarAccesibilidad(tipo As String)
@@ -132,12 +174,14 @@ Public Class Form1
                 txtBxPeliculaCalificacion.Enabled = True
                 cmbBoxPeliculaAnyo.Enabled = True
                 cmbBxPeliculaGenero.Enabled = True
-                btnAgregar.Enabled = True
+                btnAceptar.Enabled = True
+                btnCancelar.Enabled = True
 
             Case "ELIMINAR_PELICULA"
                 GroupBoxPeliculas.Enabled = True
                 txtBoxPeliculaID.Enabled = True
-                btnEliminar.Enabled = True
+                btnAceptar.Enabled = True
+                btnCancelar.Enabled = True
 
             Case "EDITAR_PELICULA"
                 GroupBoxPeliculas.Enabled = True
@@ -145,7 +189,8 @@ Public Class Form1
                 txtBxPeliculaCalificacion.Enabled = True
                 cmbBoxPeliculaAnyo.Enabled = True
                 cmbBxPeliculaGenero.Enabled = True
-                btnModificar.Enabled = True
+                btnAceptar.Enabled = True
+                btnCancelar.Enabled = True
 
             Case "AGREGAR_CLIENTE"
                 GroupBoxClientes.Enabled = True
@@ -157,20 +202,22 @@ Public Class Form1
                 txtBxClienteCorreo.Enabled = True
                 txtBxClienteNumTel.Enabled = True
                 cmbBxClienteSocio.Enabled = True
-                btnAgregar.Enabled = True
+                btnAceptar.Enabled = True
+                btnCancelar.Enabled = True
 
             Case "ELIMINAR_CLIENTE"
                 GroupBoxClientes.Enabled = True
                 txtBxClienteID.Enabled = True
-                btnEliminar.Enabled = True
+                btnAceptar.Enabled = True
+                btnCancelar.Enabled = True
 
             Case "EDITAR_CLIENTE"
                 GroupBoxClientes.Enabled = True
                 txtBxClienteID.Enabled = True
                 txtBxClienteCorreo.Enabled = True
                 cmbBxClienteSocio.Enabled = True
-                btnModificar.Enabled = True
+                btnAceptar.Enabled = True
+                btnCancelar.Enabled = True
         End Select
     End Sub
-
 End Class

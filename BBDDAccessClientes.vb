@@ -39,14 +39,13 @@ Module BBDDAccessClientes
         End Try
     End Function
 
-    Public Sub MostrarClientesEnListView(Optional ByVal filtroID As String = "", Optional ByVal filtroNombre As String = "", Optional ByVal filtroTelefono As String = "")
+    Public Sub MostrarClientesEnListView(Optional ByVal filtroID As String = "", Optional ByVal filtroNombre As String = "", Optional ByVal filtroApellido1 As String = "", Optional ByVal filtroApellido2 As String = "")
         Try
 
-            If filtroID <> "" Then consulta &= " AND id LIKE '%" & filtroID & "%'"
+            If filtroID <> "" Then consulta &= " AND Id LIKE '%" & filtroID & "%'"
             If filtroNombre <> "" Then consulta &= " AND nombre LIKE '%" & filtroNombre & "%'"
-            If filtroTelefono <> "" Then consulta &= " AND telefono LIKE '%" & filtroTelefono & "%'"
-
-            consulta &= " ORDER BY id ASC"
+            If filtroApellido1 <> "" Then consulta &= " AND apellido1 LIKE '%" & filtroApellido1 & "%'"
+            If filtroApellido2 <> "" Then consulta &= " AND apellido2 LIKE '%" & filtroApellido2 & "%'"
 
             Adaptador = New OleDbDataAdapter(consulta, bbdd_access.GetConex)
             DatosConjuntosClientes = New DataSet()
@@ -65,7 +64,7 @@ Module BBDDAccessClientes
                 elemento.SubItems.Add(fila(campos(7)).ToString())
                 'elemento.SubItems.Add(If(Convert.ToBoolean(fila(campos(7))), "Sí", "No"))
 
-                ListadoPeliculas.lstVwPeliculas.Items.Add(elemento)
+                ListadoClientes.lstVwClientes.Items.Add(elemento)
             Next
         Catch ex As Exception
             MsgBox("Error al mostrar los clientes: " & ex.Message)
@@ -125,20 +124,20 @@ Module BBDDAccessClientes
         End Try
     End Sub
 
-    Public Sub ActualizarClienteConDataAdapter(idCliente As Integer, direccion As String, telefono As String, email As String)
+    Public Sub ActualizarClienteConDataAdapter(idCliente As Integer, num_contacto As String, email As String, socio As Boolean)
         Try
             Dim tablaClientes As DataTable = DatosConjuntosClientes.Tables("Clientes")
             Dim filaAActualizar As DataRow = tablaClientes.Select("Id = " & idCliente).FirstOrDefault()
 
             If filaAActualizar IsNot Nothing Then
-                filaAActualizar("direccion") = direccion
-                filaAActualizar("telefono") = telefono
+                filaAActualizar("num_contacto") = num_contacto
                 filaAActualizar("email") = email
+                filaAActualizar("socio") = socio
 
-                Adaptador.UpdateCommand = New OleDbCommand("UPDATE Clientes SET direccion = @Direccion, telefono = @Telefono, email = @Email WHERE Id = @Id", bbdd_access.GetConex())
-                Adaptador.UpdateCommand.Parameters.Add("@Direccion", OleDbType.VarChar).Value = direccion
-                Adaptador.UpdateCommand.Parameters.Add("@Telefono", OleDbType.VarChar).Value = telefono
-                Adaptador.UpdateCommand.Parameters.Add("@Email", OleDbType.VarChar).Value = email
+                Adaptador.UpdateCommand = New OleDbCommand("UPDATE Clientes SET num_contacto = @num_contacto, email = @email, socio = @socio WHERE Id = @Id", bbdd_access.GetConex())
+                Adaptador.UpdateCommand.Parameters.Add("@numContacto", OleDbType.VarChar).Value = num_contacto
+                Adaptador.UpdateCommand.Parameters.Add("@email", OleDbType.VarChar).Value = email
+                Adaptador.UpdateCommand.Parameters.Add("@socio", OleDbType.Boolean).Value = socio
                 Adaptador.UpdateCommand.Parameters.Add("@Id", OleDbType.Integer).Value = idCliente
 
                 Adaptador.Update(DatosConjuntosClientes, "Clientes")
@@ -153,6 +152,7 @@ Module BBDDAccessClientes
             MsgBox("Error al actualizar el cliente: " & ex.Message, MsgBoxStyle.Critical)
         End Try
     End Sub
+
 
     Public Function ObtenerClientePorId(idCliente As Integer) As Cliente
         Try

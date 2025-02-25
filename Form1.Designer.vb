@@ -46,9 +46,7 @@ Partial Class Form1
         GroupBoxPeliculas = New GroupBox()
         cmbBoxPeliculaAnyo = New ComboBox()
         cmbBxPeliculaGenero = New ComboBox()
-        btnAgregar = New Button()
-        btnEliminar = New Button()
-        btnModificar = New Button()
+        btnCancelar = New Button()
         BackgroundWorker1 = New ComponentModel.BackgroundWorker()
         GroupBoxClientes = New GroupBox()
         cmbBxClienteSocio = New ComboBox()
@@ -67,6 +65,7 @@ Partial Class Form1
         txtBxClienteNumTel = New TextBox()
         Label12 = New Label()
         txtBxClienteApellido1 = New TextBox()
+        btnAceptar = New Button()
         MenuStrip1.SuspendLayout()
         GroupBoxPeliculas.SuspendLayout()
         GroupBoxClientes.SuspendLayout()
@@ -292,38 +291,16 @@ Partial Class Form1
         cmbBxPeliculaGenero.TabIndex = 16
         cmbBxPeliculaGenero.UseWaitCursor = True
         ' 
-        ' btnAgregar
+        ' btnCancelar
         ' 
-        btnAgregar.Font = New Font("Segoe UI", 16.2F, FontStyle.Bold Or FontStyle.Italic, GraphicsUnit.Point, CByte(0))
-        btnAgregar.Location = New Point(324, 354)
-        btnAgregar.Margin = New Padding(3, 2, 3, 2)
-        btnAgregar.Name = "btnAgregar"
-        btnAgregar.Size = New Size(155, 56)
-        btnAgregar.TabIndex = 17
-        btnAgregar.Text = "AGREGAR"
-        btnAgregar.UseVisualStyleBackColor = True
-        ' 
-        ' btnEliminar
-        ' 
-        btnEliminar.Font = New Font("Segoe UI", 16.2F, FontStyle.Bold Or FontStyle.Italic, GraphicsUnit.Point, CByte(0))
-        btnEliminar.Location = New Point(485, 354)
-        btnEliminar.Margin = New Padding(3, 2, 3, 2)
-        btnEliminar.Name = "btnEliminar"
-        btnEliminar.Size = New Size(150, 56)
-        btnEliminar.TabIndex = 18
-        btnEliminar.Text = "ELIMINAR"
-        btnEliminar.UseVisualStyleBackColor = True
-        ' 
-        ' btnModificar
-        ' 
-        btnModificar.Font = New Font("Segoe UI", 16.2F, FontStyle.Bold Or FontStyle.Italic, GraphicsUnit.Point, CByte(0))
-        btnModificar.Location = New Point(641, 354)
-        btnModificar.Margin = New Padding(3, 2, 3, 2)
-        btnModificar.Name = "btnModificar"
-        btnModificar.Size = New Size(169, 56)
-        btnModificar.TabIndex = 19
-        btnModificar.Text = "MODIFICAR"
-        btnModificar.UseVisualStyleBackColor = True
+        btnCancelar.Font = New Font("Segoe UI", 16.2F, FontStyle.Bold Or FontStyle.Italic, GraphicsUnit.Point, CByte(0))
+        btnCancelar.Location = New Point(566, 354)
+        btnCancelar.Margin = New Padding(3, 2, 3, 2)
+        btnCancelar.Name = "btnCancelar"
+        btnCancelar.Size = New Size(218, 56)
+        btnCancelar.TabIndex = 19
+        btnCancelar.Text = "CANCELAR"
+        btnCancelar.UseVisualStyleBackColor = True
         ' 
         ' GroupBoxClientes
         ' 
@@ -509,16 +486,26 @@ Partial Class Form1
         txtBxClienteApellido1.TabIndex = 3
         txtBxClienteApellido1.UseWaitCursor = True
         ' 
+        ' btnAceptar
+        ' 
+        btnAceptar.Font = New Font("Segoe UI", 16.2F, FontStyle.Bold Or FontStyle.Italic, GraphicsUnit.Point, CByte(0))
+        btnAceptar.Location = New Point(342, 354)
+        btnAceptar.Margin = New Padding(3, 2, 3, 2)
+        btnAceptar.Name = "btnAceptar"
+        btnAceptar.Size = New Size(218, 56)
+        btnAceptar.TabIndex = 20
+        btnAceptar.Text = "ACEPTAR"
+        btnAceptar.UseVisualStyleBackColor = True
+        ' 
         ' Form1
         ' 
         AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
         BackColor = SystemColors.ScrollBar
         ClientSize = New Size(860, 442)
+        Controls.Add(btnAceptar)
         Controls.Add(GroupBoxClientes)
-        Controls.Add(btnModificar)
-        Controls.Add(btnEliminar)
-        Controls.Add(btnAgregar)
+        Controls.Add(btnCancelar)
         Controls.Add(GroupBoxPeliculas)
         Controls.Add(MenuStrip1)
         FormBorderStyle = FormBorderStyle.FixedSingle
@@ -554,7 +541,7 @@ Partial Class Form1
     Friend WithEvents cmbBxPeliculaGenero As ComboBox
     Friend WithEvents btnAgregar As Button
     Friend WithEvents btnEliminar As Button
-    Friend WithEvents btnModificar As Button
+    Friend WithEvents btnCancelar As Button
     Friend WithEvents AcercaDeToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents cmbBoxPeliculaAnyo As ComboBox
     Friend WithEvents PelículasToolStripMenuItem As ToolStripMenuItem
@@ -583,5 +570,6 @@ Partial Class Form1
     Friend WithEvents Label14 As Label
     Friend WithEvents txtBxClienteCorreo As TextBox
     Friend WithEvents txtBxClienteDNI As TextBox
+    Friend WithEvents btnAceptar As Button
 
 End Class
