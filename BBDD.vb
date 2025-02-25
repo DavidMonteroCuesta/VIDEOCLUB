@@ -28,8 +28,8 @@ Public Class BBDD
             MsgBox("Error al desconectar: " & ex.Message)
         End Try
     End Sub
+
     Public Function GetConex() As OleDbConnection
         Return conex
     End Function
-
 End Class

@@ -5,7 +5,7 @@
     Public Property Calificacion As Integer
     Public Property Anyo As Integer
 
-    Public Sub New(titulo As String, genero As String, director As String, anyo As Integer, calificacion As Integer)
+    Public Sub New(titulo As String, director As String, genero As String, calificacion As Integer, anyo As Integer)
         Me.Titulo = titulo
         Me.Genero = genero
         Me.Director = director

@@ -41,29 +41,31 @@ Partial Class FormLogo
         Label1.AutoSize = True
         Label1.ImageIndex = 0
         Label1.ImageList = ImageList1
-        Label1.Location = New Point(62, 31)
-        Label1.MinimumSize = New Size(300, 300)
+        Label1.Location = New Point(54, 23)
+        Label1.MinimumSize = New Size(262, 225)
         Label1.Name = "Label1"
-        Label1.Size = New Size(300, 300)
+        Label1.Size = New Size(262, 225)
         Label1.TabIndex = 0
         ' 
         ' btnAgregar
         ' 
         btnAgregar.Font = New Font("Segoe UI", 16.2F, FontStyle.Bold Or FontStyle.Italic, GraphicsUnit.Point, CByte(0))
-        btnAgregar.Location = New Point(115, 350)
+        btnAgregar.Location = New Point(101, 262)
+        btnAgregar.Margin = New Padding(3, 2, 3, 2)
         btnAgregar.Name = "btnAgregar"
-        btnAgregar.Size = New Size(197, 49)
+        btnAgregar.Size = New Size(172, 37)
         btnAgregar.TabIndex = 18
         btnAgregar.Text = "COMENZAR"
         btnAgregar.UseVisualStyleBackColor = True
         ' 
         ' FormLogo
         ' 
-        AutoScaleDimensions = New SizeF(8F, 20F)
+        AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
-        ClientSize = New Size(422, 432)
+        ClientSize = New Size(369, 324)
         Controls.Add(btnAgregar)
         Controls.Add(Label1)
+        Margin = New Padding(3, 2, 3, 2)
         Name = "FormLogo"
         Text = "FormLogo"
         ResumeLayout(False)
