@@ -22,4 +22,9 @@
     Private Sub MostrarClientesFiltrados()
         BBDDAccessClientes.MostrarClientesEnListView(txtBxIDListado.Text, txtBxNombreListado.Text, txtBxApellido1Listado.Text, txtBxApellido2Listado.Text)
     End Sub
+
+    Private Sub btnCambioListado_Click(sender As Object, e As EventArgs) Handles btnCambioListado.Click
+        ListadoPeliculas.Show()
+        Me.Hide()
+    End Sub
 End Class

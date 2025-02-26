@@ -7,7 +7,6 @@ Module BBDDAccessPeliculas
     Private Adaptador As OleDbDataAdapter
     Private DatosConjuntosPeliculas As DataSet
     Private consultaMaxID As String = "SELECT MAX(Id) FROM Peliculas"
-    Private consulta As String = "SELECT * FROM Peliculas WHERE 1=1"
     Private CadenaConsultar As String = "SELECT * FROM Peliculas"
     Private CadenaInsertar As String = "INSERT INTO Peliculas (titulo, director, genero, calificacion, anyo) VALUES (@Titulo, @Director, @Genero, @Calificacion, @Anyo)"
     Private cadenaEliminar As String = "DELETE FROM Peliculas WHERE Id = @Id"
@@ -41,6 +40,8 @@ Module BBDDAccessPeliculas
 
     Public Sub MostrarPeliculasEnListView(Optional ByVal filtroID As String = "", Optional ByVal filtroTitulo As String = "", Optional ByVal filtroGenero As String = "")
         Try
+            Dim consulta As String = "SELECT * FROM Peliculas WHERE 1=1"
+
             If filtroID <> "" Then consulta &= " AND id LIKE '%" & filtroID & "%'"
             If filtroTitulo <> "" Then consulta &= " AND titulo LIKE '%" & filtroTitulo & "%'"
             If filtroGenero <> "" Then consulta &= " AND genero LIKE '%" & filtroGenero & "%'"

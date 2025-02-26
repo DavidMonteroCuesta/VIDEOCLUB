@@ -28,7 +28,7 @@ Partial Class ListadoClientes
         txtBxNombreListado = New TextBox()
         lblIDListado = New Label()
         txtBxIDListado = New TextBox()
-        btnFinal = New Button()
+        btnCambioListado = New Button()
         lstVwClientes = New ListView()
         ID = New ColumnHeader()
         NOMBRE = New ColumnHeader()
@@ -37,9 +37,9 @@ Partial Class ListadoClientes
         DNI = New ColumnHeader()
         CONTACTO = New ColumnHeader()
         EMAIL = New ColumnHeader()
+        SOCIO = New ColumnHeader()
         lblApellido2Listado = New Label()
         txtBxApellido2Listado = New TextBox()
-        SOCIO = New ColumnHeader()
         SuspendLayout()
         ' 
         ' lblApellido1Listado
@@ -105,16 +105,16 @@ Partial Class ListadoClientes
         txtBxIDListado.TabIndex = 32
         txtBxIDListado.UseWaitCursor = True
         ' 
-        ' btnFinal
+        ' btnCambioListado
         ' 
-        btnFinal.Font = New Font("Segoe UI Light", 17.25F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        btnFinal.Location = New Point(913, 10)
-        btnFinal.Margin = New Padding(3, 2, 3, 2)
-        btnFinal.Name = "btnFinal"
-        btnFinal.Size = New Size(99, 40)
-        btnFinal.TabIndex = 31
-        btnFinal.Text = "⇆"
-        btnFinal.UseVisualStyleBackColor = True
+        btnCambioListado.Font = New Font("Segoe UI Light", 17.25F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        btnCambioListado.Location = New Point(913, 10)
+        btnCambioListado.Margin = New Padding(3, 2, 3, 2)
+        btnCambioListado.Name = "btnCambioListado"
+        btnCambioListado.Size = New Size(99, 40)
+        btnCambioListado.TabIndex = 31
+        btnCambioListado.Text = "⇆"
+        btnCambioListado.UseVisualStyleBackColor = True
         ' 
         ' lstVwClientes
         ' 
@@ -166,6 +166,11 @@ Partial Class ListadoClientes
         EMAIL.TextAlign = HorizontalAlignment.Center
         EMAIL.Width = 180
         ' 
+        ' SOCIO
+        ' 
+        SOCIO.Text = "SOCIO"
+        SOCIO.TextAlign = HorizontalAlignment.Center
+        ' 
         ' lblApellido2Listado
         ' 
         lblApellido2Listado.AutoSize = True
@@ -187,11 +192,6 @@ Partial Class ListadoClientes
         txtBxApellido2Listado.TabIndex = 38
         txtBxApellido2Listado.UseWaitCursor = True
         ' 
-        ' SOCIO
-        ' 
-        SOCIO.Text = "SOCIO"
-        SOCIO.TextAlign = HorizontalAlignment.Center
-        ' 
         ' ListadoClientes
         ' 
         AutoScaleDimensions = New SizeF(7F, 15F)
@@ -206,7 +206,7 @@ Partial Class ListadoClientes
         Controls.Add(txtBxNombreListado)
         Controls.Add(lblIDListado)
         Controls.Add(txtBxIDListado)
-        Controls.Add(btnFinal)
+        Controls.Add(btnCambioListado)
         Controls.Add(lstVwClientes)
         Name = "ListadoClientes"
         Text = "ListadoClientes"
@@ -220,7 +220,7 @@ Partial Class ListadoClientes
     Friend WithEvents txtBxNombreListado As TextBox
     Friend WithEvents lblIDListado As Label
     Friend WithEvents txtBxIDListado As TextBox
-    Friend WithEvents btnFinal As Button
+    Friend WithEvents btnCambioListado As Button
     Friend WithEvents lstVwClientes As ListView
     Friend WithEvents ID As ColumnHeader
     Friend WithEvents NOMBRE As ColumnHeader

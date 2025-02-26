@@ -10,7 +10,6 @@ Module BBDDAccessClientes
     Private CadenaInsertar As String = "INSERT INTO Clientes (nombre, apellido1, apellido2, dni, num_contacto, email, socio) VALUES (@Nombre, @Apellido1, @Apellido2, @DNI, @NumContacto, @Email, @Socio)"
     Private cadenaEliminar As String = "DELETE FROM Clientes WHERE Id = @Id"
     Private cadenaConsulta As String = "SELECT * FROM Clientes WHERE Id = @Id"
-    Private consulta As String = "SELECT * FROM Clientes WHERE 1=1"
     Private consultaMaxID As String = "SELECT MAX(Id) FROM Clientes"
 
     Dim campos As List(Of String) = New List(Of String) From {"Id", "nombre", "apellido1", "apellido2", "dni", "num_contacto", "email", "socio"}
@@ -41,6 +40,7 @@ Module BBDDAccessClientes
 
     Public Sub MostrarClientesEnListView(Optional ByVal filtroID As String = "", Optional ByVal filtroNombre As String = "", Optional ByVal filtroApellido1 As String = "", Optional ByVal filtroApellido2 As String = "")
         Try
+            Dim consulta As String = "SELECT * FROM Clientes WHERE 1=1"
 
             If filtroID <> "" Then consulta &= " AND Id LIKE '%" & filtroID & "%'"
             If filtroNombre <> "" Then consulta &= " AND nombre LIKE '%" & filtroNombre & "%'"
@@ -61,8 +61,7 @@ Module BBDDAccessClientes
                 elemento.SubItems.Add(fila(campos(4)).ToString())
                 elemento.SubItems.Add(fila(campos(5)).ToString())
                 elemento.SubItems.Add(fila(campos(6)).ToString())
-                elemento.SubItems.Add(fila(campos(7)).ToString())
-                'elemento.SubItems.Add(If(Convert.ToBoolean(fila(campos(7))), "Sí", "No"))
+                elemento.SubItems.Add(If(Convert.ToBoolean(fila(campos(7))), "SI", "NO"))
 
                 ListadoClientes.lstVwClientes.Items.Add(elemento)
             Next
@@ -103,7 +102,6 @@ Module BBDDAccessClientes
             MsgBox("Error al añadir el cliente: " & ex.Message)
         End Try
     End Sub
-
 
     Public Sub EliminarClienteConDataAdapter(idCliente As Integer)
         Try

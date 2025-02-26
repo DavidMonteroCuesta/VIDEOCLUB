@@ -29,7 +29,7 @@ Partial Class ListadoPeliculas
         GENERO = New ColumnHeader()
         CALIFICACION = New ColumnHeader()
         ANYO = New ColumnHeader()
-        btnFinal = New Button()
+        btnCambioListado = New Button()
         lblIDListado = New Label()
         txtBxIDListado = New TextBox()
         lblTituloListado = New Label()
@@ -82,16 +82,16 @@ Partial Class ListadoPeliculas
         ANYO.TextAlign = HorizontalAlignment.Center
         ANYO.Width = 170
         ' 
-        ' btnFinal
+        ' btnCambioListado
         ' 
-        btnFinal.Font = New Font("Segoe UI Light", 17.25F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        btnFinal.Location = New Point(813, 11)
-        btnFinal.Margin = New Padding(3, 2, 3, 2)
-        btnFinal.Name = "btnFinal"
-        btnFinal.Size = New Size(99, 40)
-        btnFinal.TabIndex = 22
-        btnFinal.Text = "⇆"
-        btnFinal.UseVisualStyleBackColor = True
+        btnCambioListado.Font = New Font("Segoe UI Light", 17.25F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        btnCambioListado.Location = New Point(813, 11)
+        btnCambioListado.Margin = New Padding(3, 2, 3, 2)
+        btnCambioListado.Name = "btnCambioListado"
+        btnCambioListado.Size = New Size(99, 40)
+        btnCambioListado.TabIndex = 22
+        btnCambioListado.Text = "⇆"
+        btnCambioListado.UseVisualStyleBackColor = True
         ' 
         ' lblIDListado
         ' 
@@ -168,7 +168,7 @@ Partial Class ListadoPeliculas
         Controls.Add(txtBxTituloListado)
         Controls.Add(lblIDListado)
         Controls.Add(txtBxIDListado)
-        Controls.Add(btnFinal)
+        Controls.Add(btnCambioListado)
         Controls.Add(lstVwPeliculas)
         FormBorderStyle = FormBorderStyle.FixedSingle
         MaximizeBox = False
@@ -186,7 +186,7 @@ Partial Class ListadoPeliculas
     Friend WithEvents CALIFICACION As ColumnHeader
     Friend WithEvents ANYO As ColumnHeader
     Friend WithEvents GENERO As ColumnHeader
-    Friend WithEvents btnFinal As Button
+    Friend WithEvents btnCambioListado As Button
     Friend WithEvents lblIDListado As Label
     Friend WithEvents txtBxIDListado As TextBox
     Friend WithEvents lblTituloListado As Label

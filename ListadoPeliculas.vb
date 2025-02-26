@@ -18,4 +18,9 @@
     Private Sub MostrarPeliculasFiltradas()
         BBDDAccessPeliculas.MostrarPeliculasEnListView(txtBxIDListado.Text, txtBxTituloListado.Text, txtBxGeneroListado.Text)
     End Sub
+
+    Private Sub btnCambioListado_Click(sender As Object, e As EventArgs) Handles btnCambioListado.Click
+        ListadoClientes.Show()
+        Me.Hide()
+    End Sub
 End Class

@@ -5,7 +5,6 @@ Public Class Form1
         BBDDAccessPeliculas.Conectar()
         ocultarTodo()
         ListadoPeliculas.Show()
-        ListadoClientes.Show()
     End Sub
 
     Private Sub ocultarTodo()
@@ -150,7 +149,7 @@ Public Class Form1
 
     Private Sub Eliminar()
         If Me.Text.Contains("CLIENTES") Then
-
+            BBDDAccessClientes.EliminarClienteConDataAdapter(txtBxClienteID.Text)
         Else
             BBDDAccessPeliculas.EliminarPeliculaConDataAdapter(txtBoxPeliculaID.Text)
         End If
@@ -214,6 +213,7 @@ Public Class Form1
             Case "EDITAR_CLIENTE"
                 GroupBoxClientes.Enabled = True
                 txtBxClienteID.Enabled = True
+                txtBxClienteNumTel.Enabled = True
                 txtBxClienteCorreo.Enabled = True
                 cmbBxClienteSocio.Enabled = True
                 btnAceptar.Enabled = True
